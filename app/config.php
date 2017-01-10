@@ -1,5 +1,4 @@
 <?php
-
 $w_config = [
     //information de connexion à la bdd
     'db_host' => 'localhost',						//hôte (ip, domaine) de la bdd
@@ -19,7 +18,7 @@ $w_config = [
     'security_login_route_name' => 'login',			//nom de la route affichant le formulaire de connexion
 
     // configuration globale
-    'site_name'	=> '', 								// contiendra le nom du site
+    'site_name'	=> 'W the Blog', 								// contiendra le nom du site
 ];
 
 require('routes.php');
