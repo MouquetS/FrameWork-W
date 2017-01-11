@@ -11,4 +11,9 @@ class ArticleController extends Controller
         $this -> show('article/home');
     }
 
+    public function ecrire()
+    {
+        $this -> show('article/ecrire');
+    }
+
 }

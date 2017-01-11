@@ -2,6 +2,16 @@
 
 <?php $this->start('main_content') ?>
 <h2>Page utilisateur</h2>
-<p>Vous avez atteint la page d'accueil. Bravo.</p>
-<p>Et maintenant, RTFM dans <strong><a href="../docs/tuto/" title="Documentation de W">docs/tuto</a></strong>.</p>
+<p>
+  <a href="login/" title="Login">Se connecter</a>
+</p>
+<p>
+  <a href="logout/" title="deconnexion">Se déconnecter</a>
+</p>
+<p>
+  <a href="inscription/" title="inscription">Inscription</a>
+</p>
+<p>
+  <a href="../" title="inscription">Index</a>
+</p>
 <?php $this->stop('main_content') ?>
