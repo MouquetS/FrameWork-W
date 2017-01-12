@@ -7,9 +7,9 @@ $w_routes = array(
 
 
     ['GET', '/user/', 'User#home', 'user_home'],
-    ['GET', '/user/login/', 'User#login', 'user_login'],
+    ['GET|POST', '/user/login/', 'User#login', 'user_login'],
     ['GET', '/user/logout/', 'User#logout', 'user_logout'],
-    ['GET', '/user/inscription/', 'User#inscription', 'user_inscription'],
+    ['GET|POST', '/user/inscription/', 'User#inscription', 'user_inscription'],
 
 
 

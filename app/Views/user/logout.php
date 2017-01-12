@@ -1,6 +1,6 @@
 <?php $this->layout('layout', ['title' => 'Utilisateur']) ?>
 
 <?php $this->start('main_content') ?>
-<h2>Logout</h2>
-<p>Logout</p>
+<p> Vous êtes déconnecté ! </p>
+<p> <a href="../../" title="Menu principal">Index</a></p>
 <?php $this->stop('main_content') ?>
