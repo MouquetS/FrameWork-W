@@ -17,22 +17,6 @@ class UserController extends \W\Controller\Controller
 
     public function login()
     {
-
-      /*
-      $connecte = false;
-      if(!empty($_POST['pseudo']) && !empty($_POST['password'])) {
-        $user = new UserModel();
-        $userExist = $user -> loginUser($_POST['pseudo'],$_POST['password']);
-
-        if($userExist) {
-          $_SESSION['user']['id'] = $userExist['id'];
-          $connecte = true;
-        }
-      }
-      $this->show('user/login',['connecte' => $connecte]);
-      */
-
-
       if(!empty($_POST['pseudo']) && !empty($_POST['password'])) {
 
         //instancie class pour vérifier mot de passe et pseudo
@@ -65,6 +49,28 @@ class UserController extends \W\Controller\Controller
 
     public function inscription()
     {
-        $this->show('user/inscription');
+      //variables qui précise si les champs sont bien remplis/mail existant/inscription effectuée
+      $errorChamp = true;
+      $emailExist = true;
+      $inscriptionConfirm = false;
+
+      // vérifie que les champs sont remplis
+      if(!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['pseudo']) && !empty($_POST['email']) && !empty($_POST['password'])) {
+        $errorChamp = false;
+        $testmail = new UsersModel();
+
+        // vérifie si l'adresse mail indiquée est déjà existante.
+        if(!$testmail->emailExists($_POST['email'])) {
+            $emailExist = false;
+            $user = new UserModel();
+            $userData = $user -> inscription();
+            // récupère la confirmation de la création en BDD de l'utilisateur
+            $flag = $user->insert($userData, true);
+            if($flag) {
+              $inscriptionConfirm = true;
+            }
+        }
+      }
+      $this -> show('user/inscription',["confirm" => $inscriptionConfirm,"error" => $errorChamp,"mail" => $emailExist]);
     }
 }

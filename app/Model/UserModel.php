@@ -4,29 +4,24 @@ namespace Model;
 
 use \W\Model;
 use \W\Model\ConnectionModel;
+use \W\Security\AuthentificationModel;
 
 
 class UserModel extends \W\Model\Model
 {
-/*
-  public function loginUser($pseudo,$mdp) {
 
-    $app = getApp();
-    $sql = 'SELECT * FROM ' . $this->table .
-         ' WHERE pseudo' . $app->getConfig('security_name_property') . ' = :name' .
-         ' AND ' . $app->getConfig('security_password_property') . ' = :password';
-    $dbh = ConnectionModel::getDbh();
-    $sth = $dbh->prepare($sql);
-    $sth->bindValue(':name', $pseudo);
-    $sth->bindValue(':password', $mdp);
+  public function inscription() {
 
-    if($sth->execute()){
-      $foundUser = $sth->fetch();
-      if($foundUser){
-        return $foundUser;
-      }
-    }
+    $mdp = new AuthentificationModel();
+
+    $userData = array(
+      "lastname" => $_POST['nom'],
+      "firstname" => $_POST['prenom'],
+      "pseudo" => $_POST['pseudo'],
+      "email" => $_POST['email'],
+      "password" => $mdp->hashPassword($_POST['password'])
+    );
+
+    return $userData;
   }
-
-  */
 }
